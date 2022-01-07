@@ -22,8 +22,8 @@ export const Studentdesc=() =>{
   })
   const { name, age, course, batch } = data;  //destructuring for no need of obj.keys like format
   useEffect(() => {   //compunentWillUnmount compunentWillmount equivlent function
-    loadUserData();
-  }, [])
+    loadUserData()  //eslint-disable-next-line
+  },[])
   const loadUserData = async()=>{  // since useeffect will be done after the end phase we use async await function
     const any = await student.filter((x)=>(x.id===id))
     any.map((x)=>setData(x))
@@ -36,7 +36,7 @@ export const Studentdesc=() =>{
   }
   const submit=(e)=>{
     e.preventDefault();
-    if(name, age, course, batch===""){
+    if(name===""||age===""||course===""||batch===""){ 
       alert("enter the details");
     }else{ // user data collection
       if(id){//edit condition
@@ -53,8 +53,7 @@ export const Studentdesc=() =>{
         setStudent([...student,newdata])
         // console.log(newdata);
       }navigate('/student');
-    }
-    
+    } 
   }
   return (
   <div>
